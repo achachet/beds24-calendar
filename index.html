@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calendrier Beds24</title>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header class="header">
+      <h1>Calendrier Beds24</h1>
+      <div class="header-controls">
+        <button id="select-all-btn" class="btn-link" type="button">Tout sélectionner</button>
+        <button id="select-none-btn" class="btn-link" type="button">Aucune</button>
+        <button id="logout-btn" class="btn-link" type="button" title="Se déconnecter">⎋</button>
+      </div>
+    </header>
+
+    <!-- Login modal -->
+    <div id="login-modal" class="login-modal hidden">
+      <div class="login-modal-content">
+        <h2>Calendrier Beds24</h2>
+        <p>Entrez le mot de passe pour accéder au calendrier.</p>
+        <form id="login-form">
+          <input id="login-password" type="password" placeholder="Mot de passe" autocomplete="current-password" />
+          <button id="login-submit" type="submit" class="btn-primary">Se connecter</button>
+          <div id="login-error" class="login-error"></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Property legend (toggleable) -->
+    <div id="property-legend" class="property-legend"></div>
+
+    <!-- Selection info (sticky) -->
+    <div id="selection-bar" class="selection-bar hidden">
+      <span id="selection-info"></span>
+    </div>
+
+    <!-- Months container -->
+    <div id="months-container" class="months-container"></div>
+
+    <!-- Edit Panel (date editing, single prop only) -->
+    <div id="edit-panel" class="edit-panel hidden">
+      <div class="edit-panel-header">
+        <h3 id="panel-title">Modifier la sélection</h3>
+        <button id="close-panel" class="btn btn-icon">&times;</button>
+      </div>
+      <div class="edit-panel-body">
+        <div class="field">
+          <label for="edit-availability">Disponibilité</label>
+          <select id="edit-availability">
+            <option value="1">Disponible</option>
+            <option value="0">Non disponible</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="edit-min-stay">Nuits minimum</label>
+          <input type="number" id="edit-min-stay" min="1" value="1" />
+        </div>
+        <div class="field">
+          <label for="edit-price">Prix par nuit (€)</label>
+          <input type="number" id="edit-price" min="0" step="0.01" value="50" />
+        </div>
+        <div id="panel-summary" class="panel-summary"></div>
+        <button id="save-changes" class="btn btn-primary">Enregistrer</button>
+        <div id="save-status" class="save-status"></div>
+      </div>
+    </div>
+
+    <!-- Booking details modal -->
+    <div id="booking-modal" class="booking-modal hidden">
+      <div class="booking-modal-backdrop"></div>
+      <div class="booking-modal-content">
+        <div class="booking-modal-header">
+          <div class="booking-color-dot" id="booking-color-dot"></div>
+          <h3 id="booking-modal-title">Réservation</h3>
+          <button id="booking-modal-close" class="btn btn-icon">&times;</button>
+        </div>
+        <div class="booking-modal-body" id="booking-modal-body"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
