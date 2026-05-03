@@ -4,3 +4,5 @@ dist
 .env.local
 src/encrypted-token.js
 .DS_Store
+worker/node_modules
+worker/.wrangler

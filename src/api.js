@@ -5,8 +5,8 @@
 import { getRefreshToken } from "./auth.js";
 
 // En dev : vite proxy vers /api/v2 (CORS-safe)
-// En prod : appel direct
-const BASE = import.meta.env.PROD ? "https://beds24.com/api/v2" : "/api/v2";
+// En prod : Cloudflare Worker (VITE_API_BASE injecté au build)
+const BASE = import.meta.env.VITE_API_BASE || "/api/v2";
 
 let _token = null;
 let _tokenExpires = 0;
