@@ -87,10 +87,14 @@ async function onSelectAll(all) {
 
 // ---------- URL sync ----------
 
+const DEFAULT_PROPERTY_IDS = [306152, 306153, 306204];
+
 function parseUrlIds() {
   const params = new URLSearchParams(window.location.search);
   const raw = params.get("props");
-  if (!raw) return [];
+  if (!raw) {
+    return DEFAULT_PROPERTY_IDS.filter((id) => state.properties.some((p) => p.id === id));
+  }
   const ids = raw.split(",").map((s) => Number(s.trim())).filter(Boolean);
   // garder seulement ceux qui existent
   return ids.filter((id) => state.properties.some((p) => p.id === id));
